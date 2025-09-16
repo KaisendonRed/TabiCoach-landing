@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobster - Dein KI-Karriere-Coach</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .glass-effect { backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); }
+        .chat-bubble-user { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .chat-bubble-ai { background: rgba(255, 255, 255, 0.95); }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .typing-indicator::after {
+            content: '...';
+            animation: blink 1.4s infinite;
+        }
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body class="min-h-screen gradient-bg">
+    <!-- Navigation -->
+    <nav class="glass-effect border-b border-white/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
+                        <span class="text-purple-600 font-bold text-xl">J</span>
+                    </div>
+                    <span class="text-white font-bold text-xl">Jobster</span>
+                </div>
+                <button onclick="scrollToChat()" class="bg-white/20 text-white px-6 py-2 rounded-full hover:bg-white/30 transition-all duration-300">
+                    Mit Sam sprechen
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center">
+                <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 animate-fade-in">
+                    Dein KI-Karriere-<span class="text-yellow-300">Coach</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-white/80 mb-8 max-w-3xl mx-auto">
+                    Jobster macht berufliche Chancen transparent, zugänglich und persönlich. 
+                    Finde auch in einer KI-geprägten Welt immer deinen passenden nächsten Schritt.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <button onclick="scrollToChat()" class="bg-white text-purple-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg">
+                        🚀 Jetzt kostenlos starten
+                    </button>
+                    <button onclick="scrollToFeatures()" class="border-2 border-white/50 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/10 transition-all duration-300">
+                        Mehr erfahren
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="absolute top-20 left-10 animate-float">
+            <div class="w-16 h-16 bg-white/20 rounded-full"></div>
+        </div>
+        <div class="absolute bottom-20 right-10 animate-float" style="animation-delay: -3s;">
+            <div class="w-12 h-12 bg-yellow-300/30 rounded-full"></div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-white text-center mb-16">Warum Jobster?</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-effect p-8 rounded-2xl border border-white/20">
+                    <div class="w-12 h-12 bg-yellow-300 rounded-xl flex items-center justify-center mb-6">
+                        <span class="text-2xl">🎯</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Personalisierte Beratung</h3>
+                    <p class="text-white/70">Sam analysiert deine Situation, Fähigkeiten und Ziele für maßgeschneiderte Karriereempfehlungen.</p>
+                </div>
+                <div class="glass-effect p-8 rounded-2xl border border-white/20">
+                    <div class="w-12 h-12 bg-blue-400 rounded-xl flex items-center justify-center mb-6">
+                        <span class="text-2xl">🔍</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Konkrete Jobangebote</h3>
+                    <p class="text-white/70">Erhalte bis zu 10 passende Stellenausschreibungen und Weiterbildungsmöglichkeiten.</p>
+                </div>
+                <div class="glass-effect p-8 rounded-2xl border border-white/20">
+                    <div class="w-12 h-12 bg-green-400 rounded-xl flex items-center justify-center mb-6">
+                        <span class="text-2xl">🤖</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">KI-powered</h3>
+                    <p class="text-white/70">Modernste KI-Technologie für die beste Karriereberatung in einer digitalen Welt.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chat Section -->
+    <section id="chat" class="py-20 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-white mb-4">Sprich mit Sam 💬</h2>
+                <p class="text-white/70 text-lg">Starte jetzt dein kostenloses Karriere-Coaching</p>
+            </div>
+            
+            <div class="glass-effect rounded-2xl border border-white/20 overflow-hidden">
+                <!-- Chat Header -->
+                <div class="bg-white/10 p-4 border-b border-white/20">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
+                            <span class="text-white font-semibold">S</span>
+                        </div>
+                        <div>
+                            <h3 class="text-white font-semibold">Sam - Dein Karriere-Coach</h3>
+                            <p class="text-white/60 text-sm">Immer für dich da</p>
+                        </div>
+                        <div class="ml-auto">
+                            <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Chat Messages -->
+                <div id="chatMessages" class="h-96 overflow-y-auto p-6 space-y-4">
+                    <div class="flex items-start space-x-3">
+                        <div class="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="text-white text-sm font-semibold">S</span>
+                        </div>
+                        <div class="chat-bubble-ai rounded-2xl rounded-tl-sm p-4 max-w-xs">
+                            <p class="text-gray-800">Guten Tag! 👋 Schön, dass du da bist. Mein Name ist Sam. Ich bin hier, um dich dabei zu unterstützen, deinen nächsten Karriereschritt zu finden.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <div class="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="text-white text-sm font-semibold">S</span>
+                        </div>
+                        <div class="chat-bubble-ai rounded-2xl rounded-tl-sm p-4 max-w-xs">
+                            <p class="text-gray-800">Damit dieser Schritt genau zu dir passt, stelle ich dir gleich ein paar Fragen. Je offener du sie beantwortest, desto besser wird das Ergebnis! 😊</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <div class="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="text-white text-sm font-semibold">S</span>
+                        </div>
+                        <div class="chat-bubble-ai rounded-2xl rounded-tl-sm p-4 max-w-xs">
+                            <p class="text-gray-800">In welcher beruflichen Situation befindest du dich gerade?</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Chat Input -->
+                <div class="p-4 border-t border-white/20">
+                    <div class="flex space-x-3">
+                        <input 
+                            type="text" 
+                            id="chatInput" 
+                            placeholder="Schreib deine Antwort hier..." 
+                            class="flex-1 bg-white/10 text-white placeholder-white/60 rounded-full px-4 py-3 focus:outline-none focus:ring-2 focus:ring-white/30"
+                            onkeypress="if(event.key==='Enter') sendMessage()"
+                        >
+                        <button 
+                            onclick="sendMessage()" 
+                            class="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full px-6 py-3 hover:from-blue-600 hover:to-purple-700 transition-all duration-300 font-medium"
+                        >
+                            Senden
+                        </button>
+                    </div>
+                    <p class="text-white/50 text-xs mt-2 text-center">
+                        🔒 Deine Daten sind sicher und werden vertraulich behandelt
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black/20 py-12 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="flex items-center justify-center space-x-2 mb-4">
+                <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
+                    <span class="text-purple-600 font-bold text-xl">J</span>
+                </div>
+                <span class="text-white font-bold text-xl">Jobster</span>
+            </div>
+            <p class="text-white/60 mb-4">
+                Dein verlässlicher KI-Copilot für Karrieren
+            </p>
+            <p class="text-white/40 text-sm">
+                © 2025 Jobster. Made with ❤️ für deine Karriere.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function scrollToChat() {
+            document.getElementById('chat').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function scrollToFeatures() {
+            document.getElementById('features').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (message) {
+                const messagesContainer = document.getElementById('chatMessages');
+                
+                // Add user message
+                const userDiv = document.createElement('div');
+                userDiv.className = 'flex items-start space-x-3 justify-end';
+                userDiv.innerHTML = `
+                    <div class="chat-bubble-user rounded-2xl rounded-tr-sm p-4 max-w-xs text-white">
+                        <p>${message}</p>
+                    </div>
+                    <div class="w-8 h-8 bg-gray-400 rounded-full flex items-center justify-center flex-shrink-0">
+                        <span class="text-white text-sm font-semibold">Du</span>
+                    </div>
+                `;
+                messagesContainer.appendChild(userDiv);
+                
+                // Clear input
+                input.value = '';
+                
+                // Show typing indicator
+                const typingDiv = document.createElement('div');
+                typingDiv.className = 'flex items-start space-x-3';
+                typingDiv.id = 'typing-indicator';
+                typingDiv.innerHTML = `
+                    <div class="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <span class="text-white text-sm font-semibold">S</span>
+                    </div>
+                    <div class="chat-bubble-ai rounded-2xl rounded-tl-sm p-4 max-w-xs">
+                        <p class="text-gray-800 typing-indicator">Sam tippt</p>
+                    </div>
+                `;
+                messagesContainer.appendChild(typingDiv);
+                
+                // Scroll to bottom
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                
+                // Simulate AI response
+                setTimeout(() => {
+                    document.getElementById('typing-indicator').remove();
+                    
+                    const aiDiv = document.createElement('div');
+                    aiDiv.className = 'flex items-start space-x-3';
+                    aiDiv.innerHTML = `
+                        <div class="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="text-white text-sm font-semibold">S</span>
+                        </div>
+                        <div class="chat-bubble-ai rounded-2xl rounded-tl-sm p-4 max-w-xs">
+                            <p class="text-gray-800">Danke für deine Antwort! 😊 Das hilft mir sehr, dich besser zu verstehen. Lass uns weitermachen...</p>
+                        </div>
+                    `;
+                    messagesContainer.appendChild(aiDiv);
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                }, 2000);
+            }
+        }
+
+        // Add some initial animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+        });
+    </script>
+</body>
+</html>
